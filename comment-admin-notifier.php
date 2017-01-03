@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function activate_comment_admin_notifier() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-comment-admin-notifier-activator.php';
-	Comment_Admin_Notifier::activate();
+	Comment_Admin_Notifier_Activator::activate();
 }
 
 /**
@@ -72,4 +72,4 @@ function run_comment_admin_notifier() {
 	$plugin->run();
 
 }
-run_plugin_name();
+run_comment_admin_notifier();

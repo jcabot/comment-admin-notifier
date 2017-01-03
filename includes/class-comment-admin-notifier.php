@@ -21,7 +21,7 @@ class Comment_Admin_Notifier {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Plugin_Name_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Comment_Admin_Notifier_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -54,8 +54,8 @@ class Comment_Admin_Notifier {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'plugin-name';
-		$this->version = '1.0.0';
+		$this->plugin_name = 'comment-admin-notifier';
+		$this->version = '0.1.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -105,7 +105,7 @@ class Comment_Admin_Notifier {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-comment-admin-notifier-public.php';
 
-		$this->loader = new Plugin_Name_Loader();
+		$this->loader = new Comment_Admin_Notifier_Loader();
 
 	}
 
@@ -120,7 +120,7 @@ class Comment_Admin_Notifier {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Plugin_Name_i18n();
+		$plugin_i18n = new Comment_Admin_Notifier_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -135,7 +135,7 @@ class Comment_Admin_Notifier {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Plugin_Name_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Comment_Admin_Notifier_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -151,8 +151,9 @@ class Comment_Admin_Notifier {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Plugin_Name_Public( $this->get_plugin_name(), $this->get_version() );
-
+		$plugin_public = new Comment_Admin_Notifier_Public( $this->get_plugin_name(), $this->get_version() );
+        $plugin_settings = new Comment_Admin_Notifier_Settings( $this->get_plugin_name(), $this->get_version() );
+        $this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
@@ -182,7 +183,7 @@ class Comment_Admin_Notifier {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Plugin_Name_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Comment_Admin_Notifier_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
