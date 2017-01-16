@@ -75,16 +75,7 @@ class Comment_Admin_Notifier_Settings {
 			array($this, 'render_settings_page_content'), // Callback used to render the description of the section
 			'discussion'                           // Page on which to add this section of options
 		);
-
-	}
-
-
-	/**
-	 * Renders a simple page to display for the  menu defined above.
-	 */
-	public function render_settings_page_content()
-    {
-        //echo "This is the comment admin notifier section";
+        //register_setting( 'discussion', 'comment_admin_notifier_settings_section' );
 
         // Next, we will introduce the fields for toggling the email alert feature.
         add_settings_field(
@@ -98,11 +89,23 @@ class Comment_Admin_Notifier_Settings {
             )
         );
 
-        // Finally, we register the fields with WordPress
+
+        // Finally, we register the field with WordPress
         register_setting(
-            'general',
-            'show_header'
+            'discussion',
+            'email_comment_admin_alert'
         );
+        
+	}
+
+
+	/**
+	 * Renders a simple page to display for the  menu defined above.
+	 */
+	public function render_settings_page_content()
+    {
+
+
     }
 
     /**
@@ -113,12 +116,16 @@ class Comment_Admin_Notifier_Settings {
     public function render_settings_field_content($args) {
 
         // Note the ID and the name attribute of the element should match that of the ID in the call to add_settings_field
+
+
         $html = '<input type="checkbox" id="email_comment_admin_alert" name="email_comment_admin_alert" value="1" ' . checked(1, get_option('email_comment_admin_alert'), false) . '/>';
 
         // Here, we will take the first argument of the array and add it to a label next to the checkbox
         $html .= '<label for="email_comment_admin_alert"> '  . $args[0] . '</label>';
 
         echo $html;
+
+
 
     }
 
