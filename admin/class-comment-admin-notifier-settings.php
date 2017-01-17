@@ -95,7 +95,7 @@ class Comment_Admin_Notifier_Settings {
             'discussion',
             'email_comment_admin_alert'
         );
-        
+
 	}
 
 
