@@ -48,21 +48,7 @@ class Comment_Admin_Notifier_Settings {
 
 	}
 
-	/**
-	 * This function introduces the plugin options into the a  new options menu and page 'Comment Admin Notifier Options' .
-	 */
-	/**public function setup_plugin_options_menu() {
 
-		//Add the menu to the Plugins set of menu items
-		add_options_page(
-			'Comment Admin Notifier Options', 					// The title to be displayed in the browser window for this page.
-			'Comment Admin Notifier Options',					// The text to be displayed for this menu item
-			'manage_options',					// Which type of users can see this menu item, aiming at admin users only
-			'comment_admin_notifier_options',			// The unique ID - that is, the slug - for this menu item
-            array( $this, 'render_settings_page_content')		// The name of the function to call when rendering this menu's page
-		);
-
-	} */
 
 
 	/**
@@ -85,7 +71,7 @@ class Comment_Admin_Notifier_Settings {
             'discussion',                          // The page on which this option will be displayed
             'comment_admin_notifier_settings_section',         // The name of the section to which this field belongs
             array(                              // The array of arguments to pass to the callback. In this case, just a description.
-                'Activate this setting to get an email every time a new comments gets published.'
+                'Activate this setting to make sure admins get an email every time a new comments gets published.'
             )
         );
 
@@ -100,7 +86,7 @@ class Comment_Admin_Notifier_Settings {
 
 
 	/**
-	 * Renders a simple page to display for the  menu defined above.
+	 * Renders additional text for the new section
 	 */
 	public function render_settings_page_content()
     {
@@ -109,7 +95,7 @@ class Comment_Admin_Notifier_Settings {
     }
 
     /**
-     * This function renders the interface elements for toggling the email alert of the header element.
+     * This function renders the interface elements for toggling the email alert .
      * It accepts an array of arguments and expects the first element in the array to be the description
      * to be displayed next to the checkbox.
      */

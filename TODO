@@ -1,0 +1,7 @@
+
+
+* Improvements
+
+Make the setting per user so that every admin can decide whether they would like to get such email or not
+
+Avoid hardcoding the wpengine fake user and have a more flexible way (e.g. list of emails in a separate file) to avoid these hosting accounts

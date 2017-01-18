@@ -114,6 +114,9 @@ class Comment_Admin_Notifier_Admin {
 	}
 
     public function comment_post_action_callback($comment_ID, $comment_approved) {
+
+        //we first check if the option to alert admins has been checked or not
+
         if( 1 === $comment_approved ){
             //Retrieve the author of the post where the comment has been approved
             // WP_Comment_Query arguments
@@ -132,5 +135,44 @@ class Comment_Admin_Notifier_Admin {
         }
 
     }
+
+
+
+    /**
+     * Get email addresses of all admin users except for "fake" users created by hosting companies to manage your site
+     *
+     * @since    1.0.0
+     */
+    private function getAdminsToAlert(){
+        // WP_User_Query arguments to identify the "fake" users
+        $args_hosting_users = array(
+            'role'           => 'Administrator',
+            'search'         => 'wpengine',
+            'search_columns' => array( 'user_login' ),
+           'fields'          => array( 'ID'),
+        );
+
+        // The User Query
+        $user_query_hosting_users = new WP_User_Query( $args_hosting_users );
+        $users_to_exclude = array();
+        // The User Loop
+        if ( ! empty( $user_query_hosting_users->results ) ) {
+            $users_to_exclude=$user_query_hosting_users['ID'];
+        }
+
+
+        // WP_User_Query arguments to select all admin except for those returned in the previous query
+        $args = array(
+            'role'           => 'Administrator',
+            'exclude'        => $users_to_exclude,
+            'fields'         => array( 'user_nicename', 'user_login', 'user_email' ),
+        );
+        $user_query = new WP_User_Query( $args );
+
+        return $user_query;
+
+    }
+
+
 
 }
