@@ -113,4 +113,24 @@ class Comment_Admin_Notifier_Admin {
 
 	}
 
+    public function comment_post_action_callback($comment_ID, $comment_approved) {
+        if( 1 === $comment_approved ){
+            //Retrieve the author of the post where the comment has been approved
+            // WP_Comment_Query arguments
+            $args = array(
+                'id'             => $comment_ID,
+            );
+             // The Comment Query
+            $comment_query = new WP_Comment_Query( $args );
+            $comments = $comment_query->query( $args );
+            // Comment Loop
+            if ( $comments ) {
+                foreach ( $comments as $comment ) {
+                    echo '<p>' . $comment->comment_content . '</p>';
+                    
+                }
+        }
+
+    }
+
 }

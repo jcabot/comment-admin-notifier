@@ -138,6 +138,7 @@ class Comment_Admin_Notifier {
 		$plugin_admin = new Comment_Admin_Notifier_Admin( $this->get_plugin_name(), $this->get_version() );
 		$plugin_settings = new Comment_Admin_Notifier_Settings( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_section' );
+        $this->loader->add_action( 'comment_post', $plugin_settings, 'comment_post_action_callback',3 );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
