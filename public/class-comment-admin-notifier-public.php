@@ -100,4 +100,70 @@ class Comment_Admin_Notifier_Public {
 
 	}
 
+    public function comment_post_action_callback($comment_ID, $comment_approved) {
+
+        //we first check if the option to alert admins has been checked or not
+        if(get_option('email_comment_admin_alert') && $comment_approved)
+        {
+            //Retrieve all data of the comment -  WP_Comment_Query arguments
+            // WP_Comment_Query arguments
+            $args = array(
+                'id'             => $comment_ID,
+            );
+
+            // The Comment Query
+            $comment_query = new WP_Comment_Query( $args );
+            if ( $comment_query ) {
+                $comment= $comment_query[0];
+
+
+                $admins_to_email= $this->getAdminsToAlert();
+                foreach ($admins_to_email as $admin_to_email)
+                {
+                    $to=$admin_to_email->user_email;
+                    $subject = 'New comment in the post '. $comment->post_name;
+                    $body = 'Post '. $comment->post_name . ' has a new approved comment. Check it out!';
+                    wp_mail( $to, $subject, $body );
+                }
+            }
+        }
+
+    }
+
+
+
+    /**
+     * Get email addresses of all admin users except for "fake" users created by hosting companies to manage your site
+     *
+     * @since    1.0.0
+     */
+    private function getAdminsToAlert(){
+        // WP_User_Query arguments to identify the "fake" users
+        $args_hosting_users = array(
+            'role'           => 'Administrator',
+            'search'         => 'wpengine',
+            'search_columns' => array( 'user_login' ),
+            'fields'          => array( 'ID'),
+        );
+
+        // The User Query
+        $user_query_hosting_users = new WP_User_Query( $args_hosting_users );
+        $users_to_exclude = array();
+        // The User Loop
+        if ( ! empty( $user_query_hosting_users->results ) ) {
+            $users_to_exclude=$user_query_hosting_users['ID'];
+        }
+
+
+        // WP_User_Query arguments to select all admin except for those returned in the previous query
+        $args = array(
+            'role'           => 'Administrator',
+            'exclude'        => $users_to_exclude,
+            'fields'         => array( 'user_nicename', 'user_login', 'user_email' ),
+        );
+        $user_query = new WP_User_Query( $args );
+
+        return $user_query;
+
+    }
 }

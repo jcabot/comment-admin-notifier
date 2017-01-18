@@ -111,16 +111,7 @@ class Comment_Admin_Notifier_Settings {
 
         echo $html;
 
-
-
     }
-
-
-
-
-
-
-
 
 
 

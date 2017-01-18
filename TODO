@@ -2,6 +2,12 @@
 
 * Improvements
 
-Make the setting per user so that every admin can decide whether they would like to get such email or not
+- Make the setting per user so that every admin can decide whether they would like to get such email or not
 
-Avoid hardcoding the wpengine fake user and have a more flexible way (e.g. list of emails in a separate file) to avoid these hosting accounts
+- Avoid hardcoding the wpengine fake user and have a more flexible way (e.g. list of emails in a separate file) to avoid these hosting accounts
+
+- Translating the strings
+
+- Switching the email text to html and providing a direct link to the post page & the comment text (see exemples here: https://developer.wordpress.org/reference/functions/wp_mail/ )
+
+
