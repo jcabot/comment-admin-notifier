@@ -1,0 +1,6 @@
+{
+    "name": "jcabo/comment-admin-notifier",
+    "require": {
+        "phpmd/phpmd": "^2.5"
+    }
+}
