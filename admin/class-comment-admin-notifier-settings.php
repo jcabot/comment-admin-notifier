@@ -45,14 +45,10 @@ class Comment_Admin_Notifier_Settings {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
-
-
-
 	/**
-	 * This function introduces the plugin options as a new section in the Settings -> Discussion page  .
+	 * This function introduces the plugin options as a new section in the Settings -> Discussion page.
 	 */
 	public function setup_plugin_options_section() {
 		add_settings_section(

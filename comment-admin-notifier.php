@@ -48,6 +48,9 @@ function deactivate_comment_admin_notifier() {
 	Comment_Admin_Notifier_Deactivator::deactivate();
 }
 
+/**
+ * Register the previous two functions as the functions to execute upon (de)activation of the plugin
+ */
 register_activation_hook( __FILE__, 'activate_comment_admin_notifier' );
 register_deactivation_hook( __FILE__, 'deactivate_comment_admin_notifier' );
 
@@ -68,8 +71,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-comment-admin-notifier.php
  */
 function run_comment_admin_notifier() {
 
+    /* class located in the class-commment-admin-notifier.php file */
 	$plugin = new Comment_Admin_Notifier();
 	$plugin->run();
-
 }
+
 run_comment_admin_notifier();

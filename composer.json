@@ -1,6 +1,10 @@
 {
     "name": "jcabo/comment-admin-notifier",
     "require": {
-        "phpmd/phpmd": "^2.5"
+        "phpmd/phpmd": "^2.5",
+        "wp-coding-standards/wpcs": "0.14.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.3"
     }
 }

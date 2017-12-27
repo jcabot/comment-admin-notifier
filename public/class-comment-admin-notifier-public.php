@@ -102,7 +102,7 @@ class Comment_Admin_Notifier_Public {
 
     public function comment_post_action_callback( $comment_id, $comment_approved ) {
 
-        //we first check if the option to alert admins has been checked or not
+        //if the admins want to be alerted and the comment is approved
         if(get_option('email_comment_admin_alert') && $comment_approved)
         {
             //Retrieve all data of the comment -  WP_Comment_Query arguments
@@ -115,14 +115,18 @@ class Comment_Admin_Notifier_Public {
             $comment_query = new WP_Comment_Query( $args );
             if ( $comment_query ) {
                 $comment= $comment_query[0];
+                $post_author=get_post_author($comment->comment_post_id);
 
                 $admins_to_email= $this->get_admins_to_alert();
                 foreach ($admins_to_email as $admin_to_email)
                 {
-                    $to = $admin_to_email->user_email;
-                    $subject = 'New comment in the post '. $comment->post_name ;
-                    $body = 'Post '. $comment->post_name . ' has a new approved comment. Check it out!';
-                    wp_mail( $to, $subject, $body );
+                    if($admin_to_email->ID != post_author) { //Post authors can already get a  notification
+                        $admin_to_email->
+                        $to = $admin_to_email->user_email;
+                        $subject = 'New comment in the post ' . $comment->post_name;
+                        $body = 'Post ' . $comment->post_name . ' has a new approved comment. Check it out!';
+                        wp_mail($to, $subject, $body);
+                    }
                 }
             }
         }
@@ -136,7 +140,7 @@ class Comment_Admin_Notifier_Public {
      *
      * @since    1.0.0
      */
-    public function get_admins_to_alert(){
+    protected function get_admins_to_alert(){
         // WP_User_Query arguments to identify the "fake" users
         $args_hosting_users = array(
             'role'           => 'Administrator',
@@ -164,5 +168,11 @@ class Comment_Admin_Notifier_Public {
 
         return $user_query;
 
+    }
+
+    protected function get_post_author($post_id)
+    {
+        $post = new WP_Post.get_instance($post_id);
+        return $post.$this->get_post_author();
     }
 }
