@@ -3,11 +3,8 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://example.com
  * @since      1.0.0
- *
- * @package    Comment_Admin_Notifier
- * @subpackage Comment_Admin_Notifier/includes
+ * @package    Comment_Admin_Notifier\includes
  */
 
 /**

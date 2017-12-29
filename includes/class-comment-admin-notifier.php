@@ -3,15 +3,8 @@
 /**
  * The file that defines the core plugin class
  *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       http://example.com
  * @since      1.0.0
- *
- * @package    Comment_Admin_Notifier
- * @subpackage Comment_Admin_Notifier/includes
- * @author     Jordi Cabot <jcabotsagrera@gmail.com>
+ * @package    Comment_Admin_Notifier\includes
  */
 class Comment_Admin_Notifier {
 
@@ -138,11 +131,6 @@ class Comment_Admin_Notifier {
 		$plugin_admin = new Comment_Admin_Notifier_Admin( $this->get_plugin_name(), $this->get_version() );
 		$plugin_settings = new Comment_Admin_Notifier_Settings( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_section' );
-
-
-		 $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		 $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
 	}
 
 	/**
@@ -156,9 +144,6 @@ class Comment_Admin_Notifier {
 
 		$plugin_public = new Comment_Admin_Notifier_Public( $this->get_plugin_name(), $this->get_version() );
         $this->loader->add_action( 'comment_post', $plugin_public, 'comment_post_action_callback',3, 2 );
-       	$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
 	}
 
 	/**

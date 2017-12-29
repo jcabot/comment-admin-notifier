@@ -1,24 +1,11 @@
 <?php
 
-/**
- * The public-facing functionality of the plugin.
- *
- * @link       http://example.com
- * @since      1.0.0
- *
- * @package    Comment_Admin_Notifier
- * @subpackage Comment_Admin_Notifier/public
- */
 
 /**
- * The public-facing functionality of the plugin.
+ * The public-facing functionality of the plugin in charge of sending the email after a
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Comment_Admin_Notifier
- * @subpackage Comment_Admin_Notifier/public
- * @author     Jordi Cabot <jcabotsagrera@gmail.com>
+ * @since      1.0.0
+ * @package    Comment_Admin_Notifier\public
  */
 class Comment_Admin_Notifier_Public {
 
@@ -54,51 +41,11 @@ class Comment_Admin_Notifier_Public {
 
 	}
 
-	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Plugin_Name_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Plugin_Name_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/comment-admin-notifier-public.css', array(), $this->version, 'all' );
-
-	}
-
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Plugin_Name_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Plugin_Name_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/comment-admin-notifier-public.js', array( 'jquery' ), $this->version, false );
-
-	}
+    /**
+     * Callback function for the comment_post action. If the plugin settings are checked, it sends an email to all admins
+     *
+     * @since    1.0.0
+     */
 
     public function comment_post_action_callback( $comment_id, $comment_approved ) {
 
@@ -131,7 +78,7 @@ class Comment_Admin_Notifier_Public {
 
 
     /**
-     * Get email addresses of all admin users except for "fake" users created by hosting companies to manage your site
+     * Get email addresses of all admin users except for "fake" users created by some hosting companies to manage your site
      *
      * @since    1.0.0
      */
@@ -165,6 +112,11 @@ class Comment_Admin_Notifier_Public {
 
     }
 
+    /**
+     * Get the post author from the post ID
+     *
+     * @since    1.0.0
+     */
     public function get_post_author($post_id)
     {
         $post = WP_Post::get_instance($post_id);
