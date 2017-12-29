@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: softmodeling
-Tags: comments, email, admin, alert, mail, comment
+Tags: comments, email, admin, alert, mail, comment, notification
 Requires at least: 4.3
 Tested up to: 4.9.1
 Stable tag: trunk

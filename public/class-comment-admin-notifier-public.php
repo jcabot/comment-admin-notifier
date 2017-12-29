@@ -82,7 +82,7 @@ class Comment_Admin_Notifier_Public {
      *
      * @since    1.0.0
      */
-    protected function get_admins_to_alert(){
+    public function get_admins_to_alert(){
         // WP_User_Query arguments to identify the "fake" users
         $args_hosting_users = array(
             'role'           => 'Administrator',

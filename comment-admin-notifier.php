@@ -73,7 +73,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-comment-admin-notifier.php
  */
 function run_comment_admin_notifier() {
 
-    /* class located in the class-commment-admin-notifier.php file */
+    /* class located in the class-comment-admin-notifier.php file */
 	$plugin = new Comment_Admin_Notifier();
 	$plugin->run();
 }
