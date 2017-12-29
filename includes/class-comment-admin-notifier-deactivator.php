@@ -17,6 +17,11 @@ class Comment_Admin_Notifier_Deactivator {
 	 */
 	public static function deactivate() {
 
+        unregister_setting(
+            'discussion',
+            'email_comment_admin_alert'
+        );
+
 	}
 
 }
