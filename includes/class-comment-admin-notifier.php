@@ -155,7 +155,7 @@ class Comment_Admin_Notifier {
 	private function define_public_hooks() {
 
 		$plugin_public = new Comment_Admin_Notifier_Public( $this->get_plugin_name(), $this->get_version() );
-        $this->loader->add_action( 'comment_post', $plugin_public, 'comment_post_action_callback',3 );
+        $this->loader->add_action( 'comment_post', $plugin_public, 'comment_post_action_callback',3, 2 );
        	$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 

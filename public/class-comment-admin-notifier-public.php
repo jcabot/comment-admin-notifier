@@ -103,28 +103,23 @@ class Comment_Admin_Notifier_Public {
     public function comment_post_action_callback( $comment_id, $comment_approved ) {
 
         //if the admins want to be alerted and the comment is approved
-        if(get_option('email_comment_admin_alert') && $comment_approved)
+        if(get_option('email_comment_admin_alert') && 1===$comment_approved)
         {
-            //Retrieve all data of the comment -  WP_Comment_Query arguments
-            // WP_Comment_Query arguments
-            $args = array(
-                'id'             => $comment_id,
-            );
 
-            // The Comment Query
-            $comment_query = new WP_Comment_Query( $args );
-            if ( $comment_query ) {
-                $comment= $comment_query[0];
-                $post_author=get_post_author($comment->comment_post_id);
+            $comment = WP_Comment::get_instance($comment_id);
+
+            if ( $comment) {
+                $comment_on_post=$comment->comment_post_ID;
+                $post_author=$this->get_post_author($comment_on_post);
 
                 $admins_to_email= $this->get_admins_to_alert();
                 foreach ($admins_to_email as $admin_to_email)
                 {
-                    if($admin_to_email->ID != post_author) { //Post authors can already get a  notification
-                        $admin_to_email->
+                    if( ($admin_to_email->ID != $post_author) && ($admin_to_email->ID != $comment->comment_author)) { //Post authors can already get a  notification
                         $to = $admin_to_email->user_email;
                         $subject = 'New comment in the post ' . $comment->post_name;
-                        $body = 'Post ' . $comment->post_name . ' has a new approved comment. Check it out!';
+                        $body = 'Post ' . $comment->post_name . ' has a new approved comment. Check it out!: ';
+                        $body = $body . get_permalink( $comment->comment_post_ID );
                         wp_mail($to, $subject, $body);
                     }
                 }
@@ -162,17 +157,20 @@ class Comment_Admin_Notifier_Public {
         $args = array(
             'role'           => 'Administrator',
             'exclude'        => $users_to_exclude,
-            'fields'         => array( 'user_nicename', 'user_login', 'user_email' ),
+            'fields'         => array( 'ID', 'user_nicename', 'user_login', 'user_email' ),
         );
         $user_query = new WP_User_Query( $args );
 
-        return $user_query;
+        return $user_query->results;
 
     }
 
-    protected function get_post_author($post_id)
+    public function get_post_author($post_id)
     {
-        $post = new WP_Post.get_instance($post_id);
-        return $post.$this->get_post_author();
+        $post = WP_Post::get_instance($post_id);
+        if (!empty($post)) {
+            return $post->post_author;
+        }
+        return 0;
     }
 }
