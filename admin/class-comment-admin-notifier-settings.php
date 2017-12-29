@@ -1,13 +1,10 @@
 <?php
 
 /**
- * The settings of the plugin.
+ * The new discussion setting of the plugin.
  *
- * @link       http://jordicabot.com
  * @since      1.0.0
- *
- * @package    Comment_Admin_Notifier
- * @subpackage Comment_Admin_Notifier/admin
+ * @package    Comment_Admin_Notifier\admin
  */
 
 /**
@@ -16,22 +13,8 @@
  */
 class Comment_Admin_Notifier_Settings {
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
 	private $plugin_name;
 
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
 	private $version;
 
 	/**
@@ -48,18 +31,17 @@ class Comment_Admin_Notifier_Settings {
 	}
 
 	/**
-	 * This function introduces the plugin options as a new section in the Settings -> Discussion page.
+	 * This function introduces the plugin option as a new section in the Settings -> Discussion page.
 	 */
 	public function setup_plugin_options_section() {
 		add_settings_section(
 			'comment_admin_notifier_settings_section',         // ID used to identify this section and with which to register options
 			'Comment admin notifier options',                  // Title to be displayed on the administration page
 			array($this, 'render_settings_page_content'), // Callback used to render the description of the section
-			'discussion'                           // Page on which to add this section of options
+			'discussion'                           // Page on which to add this section
 		);
-        //register_setting( 'discussion', 'comment_admin_notifier_settings_section' );
 
-        // Next, we will introduce the fields for toggling the email alert feature.
+        // Next, we will introduce the field for toggling the email alert feature.
         add_settings_field(
             'email_comment_admin_alert',                      // ID used to identify the field throughout the theme
             'Email alert',                           // The label to the left of the option interface element
@@ -71,8 +53,7 @@ class Comment_Admin_Notifier_Settings {
             )
         );
 
-
-        // Finally, we register the field with WordPress
+    // Finally, we register the field with WordPress
         register_setting(
             'discussion',
             'email_comment_admin_alert'
@@ -97,9 +78,7 @@ class Comment_Admin_Notifier_Settings {
      */
     public function render_settings_field_content($args) {
 
-        // Note the ID and the name attribute of the element should match that of the ID in the call to add_settings_field
-
-
+        // Note that the ID and the name attribute of the element should match that of the ID in the call to add_settings_field
         $html = '<input type="checkbox" id="email_comment_admin_alert" name="email_comment_admin_alert" value="1" ' . checked(1, get_option('email_comment_admin_alert'), false) . '/>';
 
         // Here, we will take the first argument of the array and add it to a label next to the checkbox
@@ -108,7 +87,5 @@ class Comment_Admin_Notifier_Settings {
         echo $html;
 
     }
-
-
 
 }
