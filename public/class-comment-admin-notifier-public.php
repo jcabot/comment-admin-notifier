@@ -62,7 +62,7 @@ class Comment_Admin_Notifier_Public {
                 $admins_to_email= $this->get_admins_to_alert();
                 foreach ($admins_to_email as $admin_to_email)
                 {
-                    if( ($admin_to_email->ID != $post_author) && ($admin_to_email->ID != $comment->comment_author)) { //Post authors can already get a  notification
+                    if( ($admin_to_email->ID != $post_author) && ($admin_to_email->ID != $comment->user_id)) { //Post authors can already get a  notification
                         $to = $admin_to_email->user_email;
                         $subject = 'New comment in the post ' . $comment->post_name;
                         $body = 'Post ' . $comment->post_name . ' has a new approved comment. Check it out!: ';
@@ -87,8 +87,8 @@ class Comment_Admin_Notifier_Public {
         $args_hosting_users = array(
             'role'           => 'Administrator',
             'search'         => 'wpengine',
-            'search_columns' => array( 'user_login' ),
-            'fields'          => array( 'ID'),
+            'search_columns' => array('user_login'),
+            'fields'          => array('ID'),
         );
 
         // The User Query
@@ -96,14 +96,17 @@ class Comment_Admin_Notifier_Public {
         $users_to_exclude = array();
         // The User Loop
         if ( ! empty( $user_query_hosting_users->results ) ) {
-            $users_to_exclude=$user_query_hosting_users['ID'];
+            $users_to_exclude=$user_query_hosting_users->results;
+            foreach ($users_to_exclude as $user_to_exclude) {
+                $users_ids[] = $user_to_exclude->ID; //adding the new id at the end of the previous ones.
+            }
         }
 
 
         // WP_User_Query arguments to select all admin except for those returned in the previous query
         $args = array(
             'role'           => 'Administrator',
-            'exclude'        => $users_to_exclude,
+            'exclude'        => $users_ids,
             'fields'         => array( 'ID', 'user_nicename', 'user_login', 'user_email' ),
         );
         $user_query = new WP_User_Query( $args );
