@@ -8,7 +8,7 @@
  *
  * @package    Comment_Admin_Notifier
  * @subpackage Comment_Admin_Notifier/includes
- * @author     Jordi Cabot <jcabotsagrera@gmail.com>
+ * @author     Jordi Cabot
  */
 class Comment_Admin_Notifier_Activator {
 

@@ -1,28 +1,30 @@
 <?php
 
 /**
- * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
- * @link              http://jordicabot.com
+ * @link              https://github.com/jcabot/comment-admin-notifier
  * @since             1.0.0
  * @package           Comment_Admin_Notifier
  *
  * @wordpress-plugin
  * Plugin Name:       Comment Admin Notifier
- * Plugin URI:        http://jordicabot.com/comment-admin-notifier/
+ * Plugin URI:        https://github.com/jcabot/comment-admin-notifier
  * Description:       Enables admin users to be notified about all new published comments (even if they're not the authors of the posts)
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            Jordi Cabot
  * Author URI:        http://jordicabot.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       comment-admin-notifier
  * Domain Path:       /languages
+ *
+ * This plugin is distributed under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or  any later version.
+ *
+ * This plugin is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  */
 
 // If this file is called directly, abort.
