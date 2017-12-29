@@ -128,8 +128,11 @@ class Comment_Admin_Notifier {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_settings = new Comment_Admin_Notifier_Settings( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_section' );
+        //variable plugin_admin not used but the call is required to initialize dependencies
+        $plugin_admin = new Comment_Admin_Notifier_Admin( $this->get_plugin_name(), $this->get_version() ); //variable unused but the
+
+        $plugin_settings = new Comment_Admin_Notifier_Settings( $this->get_plugin_name(), $this->get_version() );
+        $this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_section' );
 	}
 
 	/**
