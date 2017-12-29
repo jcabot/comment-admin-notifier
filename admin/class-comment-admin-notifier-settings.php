@@ -49,7 +49,7 @@ class Comment_Admin_Notifier_Settings {
             'discussion',                          // The page on which this option will be displayed
             'comment_admin_notifier_settings_section',         // The name of the section to which this field belongs
             array(                              // The array of arguments to pass to the callback. In this case, just a description.
-                'Activate this setting to make sure admins get an email every time a new comments gets published.'
+                'Activate this setting to make sure admins get an email every time a new comment is published.'
             )
         );
 
