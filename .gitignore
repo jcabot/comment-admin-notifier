@@ -4,5 +4,3 @@
 wpcs/
 composer.json
 composer.lock
-.gitignore
-
