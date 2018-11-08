@@ -12,7 +12,7 @@
  * Description:       Enables admin users to be notified about all new published comments (even if they're not the authors of the posts)
  * Version:           1.0.0
  * Author:            Jordi Cabot
- * Author URI:        http://jordicabot.com/
+ * Author URI:        https://seriouswp.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       comment-admin-notifier
@@ -31,6 +31,14 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+/**
+ * Currently plugin version.
+ * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Rename this for your plugin and update it as you release new versions.
+ */
+define( 'COMMENT_ADMIN_NOTIFIER', '1.0.0' );
+
 
 /**
  * The code that runs during plugin activation.
