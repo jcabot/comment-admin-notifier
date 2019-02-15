@@ -2,7 +2,7 @@
 Contributors: softmodeling
 Tags: comments, email, admin, alert, mail, comment, notification
 Requires at least: 4.3
-Tested up to: 4.9.1
+Tested up to: 5.0.3
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -26,5 +26,14 @@ Install this plugin from within your WordPress site by going to Plugins &rarr; A
 
 == Changelog ==
 
+= 1.1 =
+* Plugin compatibility tested with WordPress 5.0
+
 = 1.0 =
 * Initial release
+
+
+== Upgrade Notice ==
+
+= 1.1 =
+* Tested plugin compatibility with WordPress 5.0
