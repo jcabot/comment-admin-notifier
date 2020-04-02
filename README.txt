@@ -1,14 +1,14 @@
 === Comment Admin Notifier ===
 Contributors: softmodeling
-Tags: comments, email, admin, alert, mail, comment, notification
+Tags: comments, email, admin, alert, comment, notification, notify, discussion
 Requires at least: 4.3
-Tested up to: 5.0.3
+Tested up to: 5.4
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Admin users get an email alert every time a new comment is posted on ANY post in the site
+When this plugin is installed, admin users get an email alert every time a new comment is posted on ANY post in the site
 
 == Description ==
 
@@ -26,6 +26,9 @@ Install this plugin from within your WordPress site by going to Plugins &rarr; A
 
 == Changelog ==
 
+= 1.1.1 =
+* Tested plugin compatibility with WordPress 5.4
+
 = 1.1 =
 * Plugin compatibility tested with WordPress 5.0
 
@@ -34,6 +37,9 @@ Install this plugin from within your WordPress site by going to Plugins &rarr; A
 
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+* Tested plugin compatibility with WordPress 5.4
 
 = 1.1 =
 * Tested plugin compatibility with WordPress 5.0
