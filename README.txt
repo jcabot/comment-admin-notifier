@@ -2,17 +2,17 @@
 Contributors: softmodeling
 Tags: comments, email, admin, alert, comment, notification, notify, discussion
 Requires at least: 4.3
-Tested up to: 5.4
+Tested up to: 5.8.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-When this plugin is installed, admin users get an email alert every time a new comment is posted on ANY post in the site
+With this plugin, admin users get an email alert every time a new comment is posted on ANY post in the site.
 
 == Description ==
 
-In the *Discussion* page, authors of a post can use the checkbox *Email me whenever - Anyone posts a comment*.
+In the *Settings->Discussion* page, authors of a post can use the checkbox *Email me whenever - Anyone posts a comment*.
 
 But this does not send an email as well to the site admins. In blogs where you have a number of guest authors, you may want to be informed about all the new comments so you can respond (if the author is missing) or just participate in the discussion.
 
@@ -22,9 +22,14 @@ To solve this situation, the plugin adds a new checkbox in the *Discussion* page
 
 == Installation ==
 
-Install this plugin from within your WordPress site by going to Plugins &rarr; Add New &rarr; and type this plugin's name
+Install this plugin from within your WordPress site by going to Plugins &rarr; Add New &rarr; and type this plugin's name.
+
+The plugin has a single configuration option (to enable the sending of emails) at the bottom of the *Settings->Discussion* page.
 
 == Changelog ==
+
+= 1.1.2 =
+* Tested plugin compatibility with WordPress 5.8
 
 = 1.1.1 =
 * Tested plugin compatibility with WordPress 5.4
@@ -37,6 +42,9 @@ Install this plugin from within your WordPress site by going to Plugins &rarr; A
 
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+* Tested plugin compatibility with WordPress 5.8
 
 = 1.1.1 =
 * Tested plugin compatibility with WordPress 5.4
