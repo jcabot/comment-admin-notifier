@@ -1,8 +1,8 @@
 === Comment Admin Notifier ===
 Contributors: softmodeling
-Tags: comments, email, admin, alert, comment, notification, notify, discussion
+Tags: comments, email, admin, alert, comment, notification, discussion
 Requires at least: 4.3
-Tested up to: 5.8.1
+Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -28,6 +28,9 @@ The plugin has a single configuration option (to enable the sending of emails) a
 
 == Changelog ==
 
+= 1.1.3 =
+* Tested plugin compatibility with WordPress 6.0
+
 = 1.1.2 =
 * Tested plugin compatibility with WordPress 5.8
 
@@ -42,6 +45,9 @@ The plugin has a single configuration option (to enable the sending of emails) a
 
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+* Tested plugin compatibility with WordPress 6.0
 
 = 1.1.2 =
 * Tested plugin compatibility with WordPress 5.8
